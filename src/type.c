@@ -1,8 +1,9 @@
 #include "type.h"
+
 // Type setters.
 Type setI() {
   Type temp;
-  temp.blocks = {
+  static int tempArray[4][4][4] = {
     {
       {0, 1, 0, 0},
       {0, 1, 0, 0},
@@ -24,14 +25,15 @@ Type setI() {
       {1, 1, 1, 1},
       {0, 0, 0, 0}
     }
-  }
+  };
+  mapTypeArray(tempArray, temp.blocks);
   temp.color = setBlue();
   return temp;
 }
 
 Type setJ() {
   Type temp;
-  temp.blocks = {
+  static int tempArray[4][4][4] = {
     {
       {0, 1, 0, 0},
       {0, 1, 0, 0},
@@ -53,14 +55,15 @@ Type setJ() {
       {0, 0, 1, 0},
       {0, 0, 0, 0}
     }
-  }
+  };
+  mapTypeArray(tempArray, temp.blocks);
   temp.color = setGreen();
   return temp;
 }
 
 Type setL() {
   Type temp;
-  temp.blocks = {
+  static int tempArray[4][4][4] = {
     {
       {0, 1, 0, 0},
       {0, 1, 0, 0},
@@ -82,14 +85,15 @@ Type setL() {
       {0, 0, 0, 0},
       {0, 0, 0, 0}
     }
-  }
+  };
+  mapTypeArray(tempArray, temp.blocks);
   temp.color = setGreen();
   return temp;
 }
 
 Type setO() {
   Type temp;
-  temp.blocks = {
+  static int tempArray[4][4][4] = {
     {
       {1, 1, 0, 0},
       {1, 1, 0, 0},
@@ -111,14 +115,15 @@ Type setO() {
       {0, 0, 0, 0},
       {0, 0, 0, 0}
     }
-  }
+  };
+  mapTypeArray(tempArray, temp.blocks);
   temp.color = setRed();
   return temp;
 }
 
 Type setS() {
   Type temp;
-  temp.blocks = {
+  static int tempArray[4][4][4] = {
     {
       {0, 0, 0, 0},
       {0, 1, 1, 0},
@@ -140,14 +145,15 @@ Type setS() {
       {0, 0, 1, 0},
       {0, 0, 0, 0}
     }
-  }
+  };
+  mapTypeArray(tempArray, temp.blocks);
   temp.color = setYellow();
   return temp;
 }
 
 Type setT() {
   Type temp;
-  temp.blocks = {
+  static int tempArray[4][4][4] = {
     {
       {0, 0, 0, 0},
       {1, 1, 1, 0},
@@ -169,14 +175,15 @@ Type setT() {
       {0, 1, 0, 0},
       {0, 0, 0, 0}
     }
-  }
+  };
+  mapTypeArray(tempArray, temp.blocks);
   temp.color = setBlue();
   return temp;
 }
 
 Type setZ() {
   Type temp;
-  temp.blocks = {
+  static int tempArray[4][4][4] = {
     {
       {0, 0, 0, 0},
       {1, 1, 0, 0},
@@ -198,7 +205,8 @@ Type setZ() {
       {0, 1, 0, 0},
       {0, 0, 0, 0}
     }
-  }
+  };
+  mapTypeArray(tempArray, temp.blocks);
   temp.color = setYellow();
   return temp;
 }
@@ -241,9 +249,19 @@ Color setYellow() {
 
 Color setEmpty() {
   Color temp;
-  temp.r = 230;
-  temp.g = 210;
-  temp.b = 225;
+  temp.r = 193;
+  temp.g = 189;
+  temp.b = 172;
   temp.a = 255;
   return temp;
+}
+
+void mapTypeArray(int from[4][4][4], int to[4][4][4]) {
+  for (size_t i = 0; i < 4; i++) {
+    for (size_t j = 0; j < 4; j++) {
+      for (size_t k = 0; k < 4; k++) {
+        to[i][j][k] = from[i][j][k];
+      }
+    }
+  }
 }
