@@ -9,16 +9,34 @@ void doAllActions(State *state, SDL_Event *event) {
       case SDL_KEYDOWN:
         switch (event -> key.keysym.sym) {
           case SDLK_SPACE:
-            rotateElement(state);
+            if (!state -> gameOver) {
+              rotateElement(state);
+            }
             break;
           case SDLK_LEFT:
-            move(-1, 0, state);
+            if (!state -> gameOver) {
+              move(-1, 0, state);
+            }
             break;
           case SDLK_RIGHT:
-            move(1, 0, state);
+            if (!state -> gameOver) {
+              move(1, 0, state);
+            }
             break;
           case SDLK_DOWN:
-            setTurbo(1, state);
+            if (!state -> gameOver) {
+              setTurbo(1, state);
+            }
+            break;
+          case SDLK_RETURN:
+            if (state -> gameOver) {
+              restartGame(state);
+            }
+            break;
+          case SDLK_r:
+            if (!state -> gameOver) {
+              restartGame(state);
+            }
             break;
           default:
             break;
@@ -28,13 +46,15 @@ void doAllActions(State *state, SDL_Event *event) {
         break;
     }
   }
-  if (state -> framesToMove == 0 || state -> turbo) {
-    move(0, 1, state);
-    state -> framesToMove = FRAMES_TO_MOVE;
-  } else {
-    state -> framesToMove --;
+  if (!state -> gameOver) {
+    if (state -> framesToMove == 0 || state -> turbo) {
+      move(0, 1, state);
+      state -> framesToMove = FRAMES_TO_MOVE;
+    } else {
+      state -> framesToMove --;
+    }
+    removeFull(state);
   }
-  removeFull(state);
 }
 
 void rotateElement(State *state) {
@@ -162,7 +182,8 @@ void removeFull(State *state) {
         && state -> grid[i][j].b == setEmpty().b
       ) {
         toColapse = 0;
-        break;
+      } else if (i < 5) {
+        state -> gameOver = 1;
       }
     }
     if (toColapse) {
@@ -178,4 +199,8 @@ void removeFull(State *state) {
 
 void setTurbo(int turbo, State *state) {
   state -> turbo = turbo;
+}
+
+void restartGame(State *state) {
+  *state = initState();
 }

@@ -15,4 +15,5 @@ Type randomType();
 int randomRotation();
 void removeFull(State *state);
 void setTurbo(int turbo, State *state);
+void restartGame(State *state);
 #endif // ACTIONS_H

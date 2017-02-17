@@ -10,5 +10,6 @@ void render(SDL_Renderer **renderer, State *state, TTF_Font **font);
 void renderGrid(SDL_Renderer **renderer, State *state);
 void renderPiece(SDL_Renderer **renderer, State *state);
 void renderScore(SDL_Renderer **renderer, State *state, TTF_Font **font);
+void renderGameOver(SDL_Renderer **renderer, State *state, TTF_Font **font);
 
 #endif // WINDOW_H

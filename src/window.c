@@ -53,6 +53,9 @@ void render(SDL_Renderer **renderer, State *state, TTF_Font **font) {
   renderGrid(renderer, state);
   renderPiece(renderer, state);
   renderScore(renderer, state, font);
+  if (state -> gameOver) {
+    renderGameOver(renderer, state, font);
+  }
   SDL_RenderPresent(*renderer);
 }
 
@@ -104,7 +107,7 @@ void renderScore(SDL_Renderer **renderer, State *state, TTF_Font **font) {
   SDL_Color black = {30, 30, 30, 255};
   char buffer[5];
   sprintf(buffer, "%d", state -> score);
-  SDL_Surface* surfaceMessage = TTF_RenderText_Solid(
+  SDL_Surface* surfaceMessage = TTF_RenderText_Blended(
     *font, buffer, black
   );
   SDL_Texture* mTexture = SDL_CreateTextureFromSurface(
@@ -114,6 +117,35 @@ void renderScore(SDL_Renderer **renderer, State *state, TTF_Font **font) {
   SDL_Rect renderQuad = {
     WINDOW_LENGTH - surfaceMessage -> w - 10,
     10,
+    surfaceMessage -> w,
+    surfaceMessage -> h
+  };
+  SDL_FreeSurface(surfaceMessage);
+  SDL_RenderCopyEx(
+    *renderer,
+    mTexture,
+    NULL,
+    &renderQuad,
+    0,
+    NULL,
+    SDL_FLIP_NONE
+  );
+}
+
+void renderGameOver(SDL_Renderer **renderer, State *state, TTF_Font **font) {
+  SDL_Color black = {30, 30, 30, 255};
+
+
+  SDL_Surface* surfaceMessage = TTF_RenderText_Blended(
+    *font, "Game Over", black
+  );
+  SDL_Texture* mTexture = SDL_CreateTextureFromSurface(
+    *renderer,
+    surfaceMessage
+  );
+  SDL_Rect renderQuad = {
+    WINDOW_LENGTH / 2 - surfaceMessage -> w / 2,
+    200,
     surfaceMessage -> w,
     surfaceMessage -> h
   };
