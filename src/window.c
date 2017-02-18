@@ -130,6 +130,7 @@ void renderScore(SDL_Renderer **renderer, State *state, TTF_Font **font) {
     NULL,
     SDL_FLIP_NONE
   );
+  SDL_DestroyTexture(mTexture);
 }
 
 void renderGameOver(SDL_Renderer **renderer, State *state, TTF_Font **font) {
@@ -150,6 +151,7 @@ void renderGameOver(SDL_Renderer **renderer, State *state, TTF_Font **font) {
     surfaceMessage -> h
   };
   SDL_FreeSurface(surfaceMessage);
+
   SDL_RenderCopyEx(
     *renderer,
     mTexture,
@@ -159,4 +161,5 @@ void renderGameOver(SDL_Renderer **renderer, State *state, TTF_Font **font) {
     NULL,
     SDL_FLIP_NONE
   );
+  SDL_DestroyTexture(mTexture);
 }
