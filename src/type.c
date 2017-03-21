@@ -3,7 +3,7 @@
 // Type setters.
 Type setI() {
   Type temp;
-  static int tempArray[4][4][4] = {
+  int tempArray[4][4][4] = {
     {
       {0, 1, 0, 0},
       {0, 1, 0, 0},
@@ -33,7 +33,7 @@ Type setI() {
 
 Type setJ() {
   Type temp;
-  static int tempArray[4][4][4] = {
+  int tempArray[4][4][4] = {
     {
       {0, 1, 0, 0},
       {0, 1, 0, 0},
@@ -63,7 +63,7 @@ Type setJ() {
 
 Type setL() {
   Type temp;
-  static int tempArray[4][4][4] = {
+  int tempArray[4][4][4] = {
     {
       {0, 1, 0, 0},
       {0, 1, 0, 0},
@@ -93,7 +93,7 @@ Type setL() {
 
 Type setO() {
   Type temp;
-  static int tempArray[4][4][4] = {
+  int tempArray[4][4][4] = {
     {
       {1, 1, 0, 0},
       {1, 1, 0, 0},
@@ -123,7 +123,7 @@ Type setO() {
 
 Type setS() {
   Type temp;
-  static int tempArray[4][4][4] = {
+  int tempArray[4][4][4] = {
     {
       {0, 0, 0, 0},
       {0, 1, 1, 0},
@@ -153,7 +153,7 @@ Type setS() {
 
 Type setT() {
   Type temp;
-  static int tempArray[4][4][4] = {
+  int tempArray[4][4][4] = {
     {
       {0, 0, 0, 0},
       {1, 1, 1, 0},
@@ -183,7 +183,7 @@ Type setT() {
 
 Type setZ() {
   Type temp;
-  static int tempArray[4][4][4] = {
+  int tempArray[4][4][4] = {
     {
       {0, 0, 0, 0},
       {1, 1, 0, 0},

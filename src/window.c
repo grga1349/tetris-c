@@ -16,8 +16,8 @@ int initWindow(SDL_Window **window, SDL_Renderer **renderer, TTF_Font **font) {
     WINDOW_NAME,
     SDL_WINDOWPOS_CENTERED,
     SDL_WINDOWPOS_CENTERED,
-    WINDOW_LENGTH,
-    WINDOW_HEIGHT,
+    GRID_WIDTH * (BLOCK_SIZE + 1) + 1,
+    GRID_HEIGHT * (BLOCK_SIZE + 1) + 1,
     SDL_WINDOW_SHOWN
   )) == NULL) {
     printf("Window creation failed with: %s\n", SDL_GetError());
@@ -115,7 +115,7 @@ void renderScore(SDL_Renderer **renderer, State *state, TTF_Font **font) {
     surfaceMessage
   );
   SDL_Rect renderQuad = {
-    WINDOW_LENGTH - surfaceMessage -> w - 10,
+    (GRID_WIDTH * (BLOCK_SIZE + 1) + 1) - surfaceMessage -> w - 10,
     10,
     surfaceMessage -> w,
     surfaceMessage -> h
@@ -145,7 +145,7 @@ void renderGameOver(SDL_Renderer **renderer, State *state, TTF_Font **font) {
     surfaceMessage
   );
   SDL_Rect renderQuad = {
-    WINDOW_LENGTH / 2 - surfaceMessage -> w / 2,
+    (GRID_WIDTH * (BLOCK_SIZE + 1) + 1) / 2 - surfaceMessage -> w / 2,
     200,
     surfaceMessage -> w,
     surfaceMessage -> h

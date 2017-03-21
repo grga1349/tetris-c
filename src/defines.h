@@ -2,11 +2,9 @@
 #define DEFINES_H
 
 #include <SDL2/SDL.h>
-#include <SDL/SDL_ttf.h>
+#include <SDL2/SDL_ttf.h>
 #include <stdio.h>
 
-#define WINDOW_LENGTH 211
-#define WINDOW_HEIGHT 463
 #define WINDOW_NAME "Tetris"
 
 #define GRID_WIDTH 10
